@@ -1,5 +1,5 @@
 print('Calculadora de Bhaskara')
-print('Formula: Ax² + Bx + C = 0')
+print('Ax² + Bx + C = 0')
 while True:
     print('Digite um número')
     a1 = input('Digite o A:')
