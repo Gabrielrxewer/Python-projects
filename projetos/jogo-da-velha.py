@@ -3,7 +3,7 @@ import random
 
 jogarNovamente = True
 jogadas = 0
-quemJoga = 1
+quemJoga = 2
 maxJogadas = 9
 vit = False
 velha = [
@@ -66,14 +66,6 @@ def jogada():
         jogadas += 1
 
 
-def empate():
-    if jogadas == maxJogadas:
-        print("Empate")
-    else:
-        jogada()
-        jogadaPlayer()
-
-
 def vitoria():
     global velha
     vitoria = "n"
@@ -127,5 +119,8 @@ def vitoria():
 
 while True:
     imagem()
-    empate()
-    vitoria()
+    jogadaPlayer()
+    jogada()
+    vit = vitoria()
+    if (vit != "n") or (jogadas >= maxJogadas):
+        break
