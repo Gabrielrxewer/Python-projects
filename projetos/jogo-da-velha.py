@@ -1,11 +1,10 @@
 import os
 import random
 
-jogarNovamente = True
 jogadas = 0
 quemJoga = 2
 maxJogadas = 9
-vit = False
+vit = "n"
 velha = [
     [" ", " ", " "],
     [" ", " ", " "],
@@ -33,20 +32,21 @@ def imagem():
 def jogadaPlayer():
     global jogadas
     global quemJoga
-    global x
+    global maxJogadas
+    global velha
     if quemJoga == 2 and jogadas < maxJogadas:
         x = int(input("Linha..: "))
         y = int(input("Coluna.: "))
-        velha[x][y] = "X"
-        quemJoga = 1
-        jogadas += 1
+    velha[x][y] = "X"
+    quemJoga = 1
+    jogadas += 1
     try:
         while velha[x][y] != "X":
             x = int(input("Linha..: "))
             y = int(input("Coluna.: "))
-            velha[x][y] = "X"
-            quemJoga = 1
-            jogadas += 1
+        velha[x][y] = "X"
+        quemJoga = 1
+        jogadas += 1
     except:
         print("Linha ou coluna inválida")
 
@@ -54,7 +54,8 @@ def jogadaPlayer():
 def jogada():
     global jogadas
     global quemJoga
-    global x
+    global maxJogadas
+    global velha
     if quemJoga == 1 and jogadas < maxJogadas:
         x = random.randrange(0, 3)
         y = random.randrange(0, 3)
@@ -117,10 +118,9 @@ def vitoria():
     return vitoria
 
 
-while True:
+while vit=="n":
     imagem()
     jogadaPlayer()
     jogada()
     vit = vitoria()
-    if (vit != "n") or (jogadas >= maxJogadas):
-        break
+
