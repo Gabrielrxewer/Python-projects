@@ -74,6 +74,58 @@ def empate():
         jogadaPlayer()
 
 
+def vitoria():
+    global velha
+    vitoria = "n"
+    simbolos = ["X", "O"]
+    for s in simbolos:
+        vitoria = "n"
+        # Verificação de Linha
+        il = ic = 0
+        while il < 3:
+            soma = 0
+            ic = 0
+            while ic < 3:
+                if (velha[il][ic] == s):
+                    soma += 1
+                ic += 1
+            if (soma == 3):
+                vitoria = s
+                break
+            il += 1
+        if (vitoria != "n"):
+            break
+        # Verificação de Coluna
+        il = ic = 0
+        while ic < 3:
+            soma = 0
+            il = 0
+            while il < 3:
+                if (velha[il][ic] == s):
+                    soma += 1
+                il += 1
+            if (soma == 3):
+                vitoria = s
+                break
+            ic += 1
+        if (vitoria != "n"):
+            break
+        # Verificação de Diagonais
+        soma = 0
+        idiagl = 0
+        idiagc = 2
+        while idiagc < 3:
+            if (velha[idiagl][idiagc] == s):
+                soma += 1
+            idiagl += 1
+            idiagl -= 1
+        if (soma == 3):
+            vitoria = s
+            break
+    return vitoria
+
+
 while True:
     imagem()
     empate()
+    vitoria()
