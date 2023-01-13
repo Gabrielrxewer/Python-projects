@@ -3,7 +3,7 @@ import random
 
 jogarNovamente = True
 jogadas = 0
-quemJoga = 2
+quemJoga = 1
 maxJogadas = 9
 vit = False
 velha = [
@@ -33,11 +33,15 @@ def imagem():
 def jogadaPlayer():
     global jogadas
     global quemJoga
+    global x
     if quemJoga == 2 and jogadas < maxJogadas:
         x = int(input("Linha..: "))
         y = int(input("Coluna.: "))
+        velha[x][y] = "X"
+        quemJoga = 1
+        jogadas += 1
     try:
-        while velha[x][y] != " ":
+        while velha[x][y] != "X":
             x = int(input("Linha..: "))
             y = int(input("Coluna.: "))
             velha[x][y] = "X"
@@ -60,26 +64,16 @@ def jogada():
         velha[x][y] = "O"
         quemJoga = 2
         jogadas += 1
-    if quemJoga == 2 and jogadas < maxJogadas:
-        x = int(input("Linha..: "))
-        y = int(input("Coluna.: "))
-    try:
-        while velha[x][y] != " ":
-            x = int(input("Linha..: "))
-            y = int(input("Coluna.: "))
-        velha[x][y] = "X"
-        quemJoga = 1
-        jogadas += 1
-    except:
-        print("Linha ou coluna inválida")
+
 
 def empate():
     if jogadas == maxJogadas:
         print("Empate")
     else:
         jogada()
+        jogadaPlayer()
+
 
 while True:
     imagem()
     empate()
-
