@@ -1,6 +1,8 @@
 import sqlite3
+import os
 from sqlite3 import Error
 
+os.system('cls')
 
 def conexaoBanco():
     caminho = "C:/projetos/python/database/agenda.db"
