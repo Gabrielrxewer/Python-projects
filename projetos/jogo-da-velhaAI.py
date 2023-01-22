@@ -6,6 +6,8 @@ def print_board(board):
         print(" ".join(row))
 
 # Função que chega o empate
+
+
 def check_draw(board):
     for row in board:
         for col in row:
@@ -14,6 +16,8 @@ def check_draw(board):
     return True
 
 # Função para checar o vencedor
+
+
 def check_win(board, player):
     # Checa as linhas
     for row in board:
@@ -31,6 +35,8 @@ def check_win(board, player):
     return False
 
 # Função para gerar os movimentos da AI
+
+
 def get_ai_move(board, ai_player):
     # Checa quando a AI pode ganhar com um movimento
     for row in range(3):
@@ -62,6 +68,7 @@ def get_ai_move(board, ai_player):
         for col in range(3):
             if board[row][col] == "-":
                 return (row, col)
+
 
 # Inicializa o layout
 board = [["-" for _ in range(3)] for _ in range(3)]
